@@ -14,11 +14,20 @@ class LastFmApiClient: APIClient {
     init() {
         super.init(sessionManager: Alamofire.SessionManager(configuration: .default))
     }
+    
     func search(for artist: String,  completion: @escaping (Result<ArtistSearchResult>) -> Void) {
-        let endpoint = SearchArtistRequest.SearchArtists(artist: artist)
+        let endpoint = LastFMRequest.SearchArtists(artist: artist)
         performRequest(urlRequest: endpoint,
                        parser: { data in
                         try JSONDecoder().decode(ArtistSearchResult.self, from: data)},
+                       completion: completion)
+    }
+    
+    func getAlbums(for artistName: String,  completion: @escaping (Result<AlbumsResult>) -> Void) {
+        let endpoint = LastFMRequest.GetAlbums(name: artistName)
+        performRequest(urlRequest: endpoint,
+                       parser: { data in
+                        try JSONDecoder().decode(AlbumsResult.self, from: data)},
                        completion: completion)
     }
 }

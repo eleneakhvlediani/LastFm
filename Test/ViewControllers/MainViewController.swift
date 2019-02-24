@@ -9,8 +9,6 @@
 import UIKit
 
 class MainViewController: UIViewController {
-
-    let apiClient = LastFmApiClient()
     override func viewDidLoad() {
         super.viewDidLoad()
         initNavigationBar()

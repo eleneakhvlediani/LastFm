@@ -17,7 +17,6 @@ class APIClient {
     
     init(sessionManager: Alamofire.SessionManager) {
         self.sessionManager = sessionManager
-//        sessionManager.
     }
     
     func performRequest<T: Decodable>(urlRequest: URLRequestConvertible,

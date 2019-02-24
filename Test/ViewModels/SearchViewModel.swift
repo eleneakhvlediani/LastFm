@@ -11,7 +11,10 @@ import UIKit
 
 class SearchViewModel: NSObject, UISearchBarDelegate {
     let apiClient: LastFmApiClient
+    let title = "Search"
+    private(set) var items = [ArtistCellViewModel]()
     private var throttler = Throttler(seconds: 0.5)
+    var tableUpdated: (()->Void)?
     init(apiClient: LastFmApiClient = LastFmApiClient()) {
         self.apiClient = apiClient
     }
@@ -23,15 +26,20 @@ class SearchViewModel: NSObject, UISearchBarDelegate {
             }
         }
     }
-    
     private func search(text: String) {
         guard !text.isEmpty else {
             return
         }
-        apiClient.search(for: text) { result in
+        apiClient.search(for: text) { [weak self] result in
             switch result {
             case .success(let artists):
-                print(artists)
+                self?.items = artists.results.artistmatches.artist.map { artist in
+                    return ArtistCellViewModel(name: artist.name,
+                                               id: artist.mbid,
+                                               imageUrl: artist.image.last?.text ?? "",
+                                               listenersInfo: "Listened by \(artist.listeners)")
+                }
+                self?.tableUpdated?()
             case .failure(let error):
                 print(error)
             }

@@ -23,4 +23,7 @@ struct AlbumResult: Decodable {
     let mbid: String?
     let image: [Image]
     let artist: Artist
+    var imageUrl: String? {
+        return image.last?.text
+    }
 }

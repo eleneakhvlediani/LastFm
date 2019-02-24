@@ -30,4 +30,12 @@ class LastFmApiClient: APIClient {
                         try JSONDecoder().decode(AlbumsResult.self, from: data)},
                        completion: completion)
     }
+    
+    func getAlbumInfo(artistName: String, albumName: String,  completion: @escaping (Result<AlbumDetailedInfo>) -> Void) {
+        let endpoint = LastFMRequest.GetAlbumInfo(name: albumName, artist: artistName)
+        performRequest(urlRequest: endpoint,
+                       parser: { data in
+                        try JSONDecoder().decode(AlbumDetailedInfo.self, from: data)},
+                       completion: completion)
+    }
 }

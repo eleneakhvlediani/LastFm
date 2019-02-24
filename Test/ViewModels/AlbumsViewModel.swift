@@ -23,7 +23,7 @@ class AlbumsViewModel {
             switch result {
             case .success(let albums):
                 self.albums = albums.topalbums.album.map { value -> AlbumCellViewModel in
-                    return AlbumCellViewModel(albumName: value.name, artistName: value.artist.name, imageUrl: value.image.last!.text)
+                    return AlbumCellViewModel(albumName: value.name, artistName: value.artist.name, imageUrl: value.imageUrl ?? "")
                 }
                 reloadDataHandler()
             case .failure(let error):

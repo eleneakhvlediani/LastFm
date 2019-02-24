@@ -22,6 +22,11 @@
 		6F05E60A22231D3E004F957A /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F05E60922231D3E004F957A /* ShadowView.swift */; };
 		6F05E60C22233A32004F957A /* AlbumCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F05E60B22233A32004F957A /* AlbumCollectionViewCell.swift */; };
 		6F05E60E22233A63004F957A /* AlbumCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F05E60D22233A63004F957A /* AlbumCellViewModel.swift */; };
+		6F05E6102223475F004F957A /* DetailedPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F05E60F2223475F004F957A /* DetailedPageViewController.swift */; };
+		6F05E61222234871004F957A /* DetailedPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F05E61122234871004F957A /* DetailedPageViewModel.swift */; };
+		6F05E61422234F60004F957A /* AlbumInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F05E61322234F60004F957A /* AlbumInfo.swift */; };
+		6F05E616222353DB004F957A /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F05E615222353DB004F957A /* TrackTableViewCell.swift */; };
+		6F05E618222353FA004F957A /* TrackCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F05E617222353FA004F957A /* TrackCellViewModel.swift */; };
 		6FDA555A221202430061D0D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDA5559221202430061D0D7 /* AppDelegate.swift */; };
 		6FDA555F221202430061D0D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FDA555D221202430061D0D7 /* Main.storyboard */; };
 		6FDA5561221202450061D0D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FDA5560221202450061D0D7 /* Assets.xcassets */; };
@@ -72,6 +77,11 @@
 		6F05E60922231D3E004F957A /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		6F05E60B22233A32004F957A /* AlbumCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCollectionViewCell.swift; sourceTree = "<group>"; };
 		6F05E60D22233A63004F957A /* AlbumCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCellViewModel.swift; sourceTree = "<group>"; };
+		6F05E60F2223475F004F957A /* DetailedPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedPageViewController.swift; sourceTree = "<group>"; };
+		6F05E61122234871004F957A /* DetailedPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedPageViewModel.swift; sourceTree = "<group>"; };
+		6F05E61322234F60004F957A /* AlbumInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumInfo.swift; sourceTree = "<group>"; };
+		6F05E615222353DB004F957A /* TrackTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
+		6F05E617222353FA004F957A /* TrackCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCellViewModel.swift; sourceTree = "<group>"; };
 		6FDA5556221202430061D0D7 /* Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FDA5559221202430061D0D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6FDA555E221202430061D0D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -150,6 +160,7 @@
 			children = (
 				6F05E5F52222FFD0004F957A /* ArtistTableViewCell.swift */,
 				6F05E60B22233A32004F957A /* AlbumCollectionViewCell.swift */,
+				6F05E615222353DB004F957A /* TrackTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -159,6 +170,7 @@
 			children = (
 				6F05E5F8222301EA004F957A /* ArtistCellViewModel.swift */,
 				6F05E60D22233A63004F957A /* AlbumCellViewModel.swift */,
+				6F05E617222353FA004F957A /* TrackCellViewModel.swift */,
 			);
 			path = CellViewModels;
 			sourceTree = "<group>";
@@ -169,6 +181,7 @@
 				6F05E5F7222300EB004F957A /* CellViewModels */,
 				6FDA55A022121F550061D0D7 /* SearchViewModel.swift */,
 				6F05E60422230FF1004F957A /* AlbumsViewModel.swift */,
+				6F05E61122234871004F957A /* DetailedPageViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -237,6 +250,7 @@
 			children = (
 				6FDA559122120EE90061D0D7 /* ArtistSearchResult.swift */,
 				6F05E6072223135F004F957A /* AlbumsResult.swift */,
+				6F05E61322234F60004F957A /* AlbumInfo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -268,6 +282,7 @@
 				6FDA559E22121F170061D0D7 /* MainViewController.swift */,
 				6FDA559822121A020061D0D7 /* SearchViewController.swift */,
 				6F05E5FE22230C8C004F957A /* AlbumsViewController.swift */,
+				6F05E60F2223475F004F957A /* DetailedPageViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -521,6 +536,7 @@
 			files = (
 				6F05E60C22233A32004F957A /* AlbumCollectionViewCell.swift in Sources */,
 				6FDA559B22121B080061D0D7 /* NSObjectProtocol+Extension.swift in Sources */,
+				6F05E6102223475F004F957A /* DetailedPageViewController.swift in Sources */,
 				6FDA555A221202430061D0D7 /* AppDelegate.swift in Sources */,
 				6FDA559922121A020061D0D7 /* SearchViewController.swift in Sources */,
 				6F05E5FF22230C8C004F957A /* AlbumsViewController.swift in Sources */,
@@ -533,7 +549,10 @@
 				6FDA559222120EE90061D0D7 /* ArtistSearchResult.swift in Sources */,
 				6F05E5F32222FF51004F957A /* UITableView+Extension.swift in Sources */,
 				6FDA558C22120C070061D0D7 /* ApiClient.swift in Sources */,
+				6F05E616222353DB004F957A /* TrackTableViewCell.swift in Sources */,
+				6F05E61422234F60004F957A /* AlbumInfo.swift in Sources */,
 				6F05E60A22231D3E004F957A /* ShadowView.swift in Sources */,
+				6F05E618222353FA004F957A /* TrackCellViewModel.swift in Sources */,
 				6FDA55A3221220AD0061D0D7 /* Throttler.swift in Sources */,
 				6F05E6082223135F004F957A /* AlbumsResult.swift in Sources */,
 				6F05E60322230EBC004F957A /* LastFMRequest.swift in Sources */,
@@ -542,6 +561,7 @@
 				6FDA558E22120C070061D0D7 /* LastFmApiClient.swift in Sources */,
 				6F05E60522230FF1004F957A /* AlbumsViewModel.swift in Sources */,
 				6F05E5FD22230650004F957A /* UIImageView+Extension.swift in Sources */,
+				6F05E61222234871004F957A /* DetailedPageViewModel.swift in Sources */,
 				6F05E5F62222FFD0004F957A /* ArtistTableViewCell.swift in Sources */,
 				6FDA558F22120C070061D0D7 /* APIEndPoint.swift in Sources */,
 			);

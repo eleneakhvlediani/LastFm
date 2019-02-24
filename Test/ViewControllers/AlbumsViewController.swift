@@ -47,6 +47,12 @@ extension AlbumsViewController: UICollectionViewDelegate, UICollectionViewDataSo
         cell.set(viewData: item)
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailedPageViewController: DetailedPageViewController = UIStoryboard.main.instantiate()
+        detailedPageViewController.albumViewModel =  albumsViewModel.albums[indexPath.row]
+        navigationController?.pushViewController(detailedPageViewController, animated: true)
+    }
 }
 
 extension AlbumsViewController: UICollectionViewDelegateFlowLayout {

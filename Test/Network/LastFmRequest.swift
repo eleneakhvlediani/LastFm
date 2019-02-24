@@ -39,4 +39,21 @@ struct LastFMRequest {
             return ""
         }
     }
+    
+    struct GetAlbumInfo: APIEndpoint {
+        let baseURLString: String = "http://ws.audioscrobbler.com/2.0"
+        let name: String
+        let artist: String
+        let method: HTTPMethod = .get
+        var parameters: [String : Any] {
+            return ["method": "album.getinfo",
+                    "artist": artist,
+                    "album": name,
+                    "api_key": apiKey,
+                    "format": "json"]
+        }
+        var path: String {
+            return ""
+        }
+    }
 }

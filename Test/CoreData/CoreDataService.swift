@@ -22,7 +22,7 @@ class CoreDataService {
         context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
     }
     
-    func addAlbum(album: AlbumInfo) {
+    func addAlbum(album: AlbumInfo, completionHandler: @escaping ()->Void) {
         let albumContext = Album(context: context)
         albumContext.name = album.name
         albumContext.artistName = album.artist
@@ -32,7 +32,7 @@ class CoreDataService {
             savedTrack.name = track.name
             albumContext.addToTracks(savedTrack)
         }
-        save()
+        save(completionHandler: completionHandler)
     }
     
     func getAlbums(completionHandler: @escaping (([SavedAlbum])-> Void)) {
@@ -57,15 +57,16 @@ class CoreDataService {
         }
     }
     
-    private func save() {
+    private func save(completionHandler: @escaping ()->Void) {
         do {
             try context.save()
+            completionHandler()
         } catch {
             print("Failed saving")
         }
     }
     
-    func deleteAlbum(with albumName: String) {
+    func deleteAlbum(with albumName: String, completionHandler: @escaping ()->Void) {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: Entity.album.rawValue)
         request.returnsObjectsAsFaults = false
         let predicate = NSPredicate(format: "name = %@", albumName)
@@ -81,6 +82,6 @@ class CoreDataService {
         } catch {
             print("Failed")
         }
-        save()
+        save(completionHandler: completionHandler)
     }
 }

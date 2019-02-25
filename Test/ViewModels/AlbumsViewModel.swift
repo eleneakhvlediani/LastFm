@@ -36,23 +36,41 @@ class DownloadStrategy: GetAlbumStrategy {
     let shouldHaveSearch: Bool = false
     let apiClient: LastFmApiClient
     let name: String
+    let coreDataService: CoreDataService
     init(name: String,
-        apiClient: LastFmApiClient = LastFmApiClient()) {
+        apiClient: LastFmApiClient = LastFmApiClient(),
+        coreDataService: CoreDataService = .shared) {
+        self.coreDataService = coreDataService
         self.apiClient = apiClient
         self.name = name
     }
 
     func getAlbums(reloadDataHandler: @escaping ([AlbumCellViewModel]) -> Void) {
+        getSavedAlbums { [weak self] savedAlbums in
+            self?.downloadAlbums { downloadedAlbums in
+                let albums = downloadedAlbums.map { value -> AlbumCellViewModel in
+                    let isSaved = savedAlbums.contains { $0.name == value.name }
+                    return AlbumCellViewModel(albumName: value.name, artistName: value.artist.name, imageUrl: value.imageUrl ?? "", isSaved: isSaved)
+                }
+                reloadDataHandler(albums)
+            }
+        }
+    }
+    
+    private func downloadAlbums(completionHandler: @escaping ([AlbumResult]) -> Void) {
         apiClient.getAlbums(for: name) { result in
             switch result {
             case .success(let albums):
-                let albums = albums.topalbums.album.map { value -> AlbumCellViewModel in
-                    return AlbumCellViewModel(albumName: value.name, artistName: value.artist.name, imageUrl: value.imageUrl ?? "")
-                }
-                reloadDataHandler(albums)
+                completionHandler(albums.topalbums.album)
             case .failure(let error):
                 print(error)
             }
+        }
+    }
+    
+    private func getSavedAlbums(completionHandler: @escaping ([SavedAlbum]) -> Void) {
+        coreDataService.getAlbums { savedAlbums in
+            completionHandler(savedAlbums)
         }
     }
 }
@@ -66,7 +84,7 @@ class GetFromDataBaseStrategy: GetAlbumStrategy {
     
     func getAlbums(reloadDataHandler: @escaping ([AlbumCellViewModel]) -> Void) {
         coreDataService.getAlbums { savedAlbums in
-            let albums = savedAlbums.map { AlbumCellViewModel(albumName: $0.name, artistName: $0.artist, imageUrl: $0.imageUrl) }
+            let albums = savedAlbums.map { AlbumCellViewModel(albumName: $0.name, artistName: $0.artist, imageUrl: $0.imageUrl, isSaved: true) }
             reloadDataHandler(albums)
         }
     }

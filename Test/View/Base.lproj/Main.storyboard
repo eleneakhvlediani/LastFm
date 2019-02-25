@@ -175,6 +175,14 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-heart-filled-20" translatesAutoresizingMaskIntoConstraints="NO" id="osd-nC-oP2">
+                                                    <rect key="frame" x="155" y="10" width="25" height="25"/>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="25" id="K0j-WT-GB0"/>
+                                                        <constraint firstAttribute="height" constant="25" id="rHJ-5n-DIQ"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                         </view>
                                         <constraints>
@@ -187,7 +195,9 @@
                                             <constraint firstItem="6be-uX-USh" firstAttribute="leading" secondItem="T6O-hM-G2B" secondAttribute="leading" constant="5" id="L0m-CE-yod"/>
                                             <constraint firstItem="T6O-hM-G2B" firstAttribute="centerX" secondItem="mu2-kC-jPH" secondAttribute="centerX" id="NuS-jJ-5Nf"/>
                                             <constraint firstAttribute="bottom" secondItem="mu2-kC-jPH" secondAttribute="bottom" id="TMr-sl-W4C"/>
+                                            <constraint firstAttribute="trailing" secondItem="osd-nC-oP2" secondAttribute="trailing" constant="10" id="TTG-eN-V6r"/>
                                             <constraint firstItem="T6O-hM-G2B" firstAttribute="width" secondItem="mu2-kC-jPH" secondAttribute="width" id="ad2-zL-9IM"/>
+                                            <constraint firstItem="osd-nC-oP2" firstAttribute="top" secondItem="pb6-Pp-N5Y" secondAttribute="top" constant="10" id="dCf-nl-h4v"/>
                                             <constraint firstAttribute="trailing" secondItem="mu2-kC-jPH" secondAttribute="trailing" id="fZA-hQ-aaA"/>
                                             <constraint firstItem="rbE-1j-o7H" firstAttribute="leading" secondItem="6be-uX-USh" secondAttribute="leading" id="i2k-gI-72y"/>
                                             <constraint firstAttribute="bottom" secondItem="T6O-hM-G2B" secondAttribute="bottom" id="oBH-bM-Zja"/>
@@ -197,6 +207,7 @@
                                             <outlet property="albumImage" destination="mu2-kC-jPH" id="WYa-dm-Hlk"/>
                                             <outlet property="albumNameLabel" destination="rbE-1j-o7H" id="5l0-P7-r7Z"/>
                                             <outlet property="artistNameLabel" destination="6be-uX-USh" id="yap-9P-QVz"/>
+                                            <outlet property="isSavedImageView" destination="osd-nC-oP2" id="1Rz-Qu-fvt"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -359,6 +370,7 @@
                         <outlet property="albumNameLabel" destination="qCT-l4-w7F" id="Mea-wT-ngg"/>
                         <outlet property="artistNameLabel" destination="XP3-HF-7lr" id="rhU-xv-JXD"/>
                         <outlet property="mainView" destination="nOq-IZ-ECw" id="fju-fk-5xf"/>
+                        <outlet property="saveDeleteButton" destination="hrZ-gs-Ntm" id="CJN-YF-X6G"/>
                         <outlet property="tracksTableView" destination="pqu-Lb-e0j" id="OjD-mk-WhT"/>
                     </connections>
                 </viewController>
@@ -368,6 +380,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="icons8-heart-filled-20" width="75" height="75"/>
         <image name="lastFm" width="256" height="256"/>
     </resources>
 </document>

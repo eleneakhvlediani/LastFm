@@ -15,6 +15,7 @@ class DetailedPageViewModel {
     private(set) var tracks: [TrackCellViewModel] = []
     private let albumViewModel: AlbumCellViewModel?
     private var albumInfo: AlbumInfo?
+    private (set) lazy var isAlbumSaved: Bool  = albumViewModel?.isSaved ?? false
     init(apiClient: LastFmApiClient = LastFmApiClient(),
          coreDataService: CoreDataService = .shared,
         albumViewModel: AlbumCellViewModel?) {
@@ -40,10 +41,24 @@ class DetailedPageViewModel {
         }
     }
     
-    func saveAlbum() {
+    func saveAlbum(completionHandler: @escaping ()->Void) {
+        guard let album = albumInfo else {
+            return
+        }
+        coreDataService.addAlbum(album: album) { [weak self] in
+            self?.isAlbumSaved = true
+            completionHandler()
+        }
+    }
+    
+    func deleteAlbum(completionHandler: @escaping ()->Void) {
         guard let album = albumInfo else {
             return
         }
         coreDataService.deleteAlbum(with: album.name)
+        { [weak self] in
+            self?.isAlbumSaved = false
+            completionHandler()
+        }
     }
 }

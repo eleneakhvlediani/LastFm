@@ -10,10 +10,17 @@ import UIKit
 
 class AlbumCollectionViewCell: BaseCollectionViewCell {
     
+    @IBOutlet weak var isSavedImageView: UIImageView!
     @IBOutlet weak var albumImage: UIImageView!
     @IBOutlet weak var albumNameLabel: UILabel!
     @IBOutlet weak var artistNameLabel: UILabel!
     private var imageUrl: String?
+    
+    override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        isSavedImageView.image = #imageLiteral(resourceName: "icons8-heart-filled-20").tint(with: .white)
+    }
+    
     override func set(viewData: BaseCellViewModel) {
         guard let info = viewData as? AlbumCellViewModel else {
             fatalError("Unexpected view model provided. Excepted AlbumCellViewModel while provided: \(type(of: viewData))")
@@ -27,5 +34,6 @@ class AlbumCollectionViewCell: BaseCollectionViewCell {
                 self?.albumImage.setImageWithFadeAnimation(image)
             }
         }
+        isSavedImageView.isHidden = !info.isSaved
     }
 }

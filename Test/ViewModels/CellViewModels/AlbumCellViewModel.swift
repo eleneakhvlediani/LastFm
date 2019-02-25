@@ -12,4 +12,5 @@ struct AlbumCellViewModel: BaseCellViewModel {
     let albumName: String
     let artistName: String
     let imageUrl: String
+    let isSaved: Bool
 }

@@ -20,12 +20,13 @@ class DetailedPageViewController: UIViewController {
     @IBOutlet weak var albumNameLabel: UILabel!
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var mainView: UIView!
+    @IBOutlet weak var saveDeleteButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         getInfo()
         navigationItem.title = albumViewModel?.albumName
     }
-    
+  
     private func getInfo() {
         mainView.isHidden = true
         activityIndicator.startAnimating()
@@ -35,14 +36,29 @@ class DetailedPageViewController: UIViewController {
             self?.albumImageView.lazyLoad(url: albumInfo.imageUrl) { img in
                 self?.albumImageView.setImageWithFadeAnimation(img)
             }
+            self?.updateButtonTitle()
+           
             self?.tracksTableView.reloadData()
             self?.mainView.isHidden = false
             self?.activityIndicator.stopAnimating()
         }
     }
     
-    @IBAction func saveButtonClicked(_ sender: Any) {
-        detailedPageViewModel.saveAlbum()
+    private func updateButtonTitle() {
+        let isSaved = detailedPageViewModel.isAlbumSaved
+        saveDeleteButton.setTitle(isSaved ? "Delete" : "Save", for: .normal)
+        saveDeleteButton.tag = isSaved ? 2 : 1
+    }
+
+    @IBAction func saveButtonClicked(_ sender: UIButton) {
+        switch sender.tag {
+        case 2:
+            detailedPageViewModel.deleteAlbum(completionHandler: updateButtonTitle)
+        case 1:
+            detailedPageViewModel.saveAlbum(completionHandler: updateButtonTitle)
+        default:
+            return
+        }
     }
 }
 

@@ -29,6 +29,17 @@ class DetailedPageViewModel {
             let albumName = albumViewModel?.albumName else {
                 return
         }
+        
+        switch isAlbumSaved {
+        case true:
+            getFromDataBase(albumName: albumName, completionHandler: completionHandler)
+        case false:
+            downloadAlbum(artistName: artistName, albumName: albumName, completionHandler: completionHandler)
+        }
+        
+    }
+    
+    private func downloadAlbum(artistName: String, albumName: String, completionHandler: @escaping (AlbumInfo)-> Void) {
         apiClient.getAlbumInfo(artistName: artistName, albumName: albumName) { [weak self] result in
             switch result {
             case .success(let albums):
@@ -38,6 +49,15 @@ class DetailedPageViewModel {
             case .failure(let error):
                 print(error)
             }
+        }
+    }
+    
+    private func getFromDataBase(albumName: String, completionHandler: @escaping (AlbumInfo)-> Void) {
+        coreDataService.getAlbum(with: albumName) { [weak self] savedAlbum in
+            self?.tracks = savedAlbum.tracks?.map { TrackCellViewModel(name: $0.name)} ?? []
+            let album = AlbumInfo(name: savedAlbum.name, artist: savedAlbum.artist, imageUrl: savedAlbum.imageUrl, tracks: savedAlbum.tracks ?? [])
+            self?.albumInfo = album
+            completionHandler(album)
         }
     }
     

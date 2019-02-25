@@ -37,4 +37,9 @@ struct Image: Decodable {
         case text = "#text"
         case size = "size"
     }
+    
+    init(url: String) {
+        self.text = url
+        self.size = ""
+    }
 }

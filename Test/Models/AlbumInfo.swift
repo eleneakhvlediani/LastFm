@@ -19,6 +19,13 @@ struct AlbumInfo: Decodable {
     var imageUrl: String {
         return image.last?.text ?? ""
     }
+    
+    init(name: String, artist: String, imageUrl: String, tracks: [Track]) {
+        self.name = name
+        self.artist = artist
+        self.image = [Image(url: imageUrl)]
+        self.tracks = TrackList(track: tracks)
+    }
 }
 
 struct TrackList: Decodable {

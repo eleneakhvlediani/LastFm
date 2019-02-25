@@ -37,7 +37,6 @@ class DetailedPageViewController: UIViewController {
                 self?.albumImageView.setImageWithFadeAnimation(img)
             }
             self?.updateButtonTitle()
-           
             self?.tracksTableView.reloadData()
             self?.mainView.isHidden = false
             self?.activityIndicator.stopAnimating()

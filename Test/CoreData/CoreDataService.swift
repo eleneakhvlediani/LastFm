@@ -67,6 +67,25 @@ class CoreDataService {
     }
     
     func deleteAlbum(with albumName: String, completionHandler: @escaping ()->Void) {
+        getSavedAlbums(with: albumName) { [weak self] contextArray in
+            contextArray.forEach { obj in
+                self?.context.delete(obj)
+            }
+            self?.save(completionHandler: completionHandler)
+        }
+    }
+    
+    func getAlbum(with albumName: String, completionHandler: @escaping (SavedAlbum)->Void) {
+        getSavedAlbums(with: albumName) { contextArray in
+            if let album = contextArray.first as? Album {
+                let tracks = (album.tracks?.allObjects as? [SavedTrack])?.compactMap { Track(name: $0.name ?? "") }
+                let saved = SavedAlbum(name: album.name ?? "", artist: album.artistName ?? "", imageUrl: album.imageUrl ?? "", tracks: tracks)
+                completionHandler(saved)
+            }
+        }
+    }
+
+    private func getSavedAlbums(with albumName: String, completionHandler: @escaping ([NSManagedObject])->Void) {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: Entity.album.rawValue)
         request.returnsObjectsAsFaults = false
         let predicate = NSPredicate(format: "name = %@", albumName)
@@ -76,12 +95,9 @@ class CoreDataService {
             guard let contextArray = (result as? [NSManagedObject]) else {
                 return
             }
-            contextArray.forEach { obj in
-                 context.delete(obj)
-            }
+            completionHandler(contextArray)
         } catch {
             print("Failed")
         }
-        save(completionHandler: completionHandler)
     }
 }

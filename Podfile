@@ -10,7 +10,6 @@ target 'Test' do
 
   target 'TestTests' do
     inherit! :search_paths
-    pod 'Nimble', '~> 6.0.0'
   end
 
 end

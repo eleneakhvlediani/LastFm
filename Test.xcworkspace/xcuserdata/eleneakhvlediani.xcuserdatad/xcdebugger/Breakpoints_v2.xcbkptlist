@@ -170,7 +170,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Test/Network/APIEndPoint.swift"
-            timestampString = "572746115.019679"
+            timestampString = "572810101.509715"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "28"
@@ -346,7 +346,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Test/CoreData/CoreDataService.swift"
-            timestampString = "572808009.348276"
+            timestampString = "572810101.510298"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "61"
@@ -362,7 +362,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Test/CoreData/CoreDataService.swift"
-            timestampString = "572808009.348335"
+            timestampString = "572810101.510373"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "65"
@@ -374,11 +374,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Test/CoreData/CoreDataService.swift"
-            timestampString = "572808009.348382"
+            timestampString = "572810101.510434"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "40"
@@ -390,11 +390,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Test/CoreData/CoreDataService.swift"
-            timestampString = "572808009.348425"
+            timestampString = "572810101.510491"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "43"
@@ -406,11 +406,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Test/CoreData/CoreDataService.swift"
-            timestampString = "572808009.3484679"
+            timestampString = "572810101.51055"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "52"
@@ -426,7 +426,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Test/ViewModels/AlbumsViewModel.swift"
-            timestampString = "572808009.348575"
+            timestampString = "572810101.51061"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "86"
@@ -474,7 +474,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Test/ViewModels/DetailedPageViewModel.swift"
-            timestampString = "572808009.348634"
+            timestampString = "572810101.510672"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "60"
@@ -522,7 +522,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Test/ViewControllers/DetailedPageViewController.swift"
-            timestampString = "572808009.349143"
+            timestampString = "572810101.510833"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
@@ -538,7 +538,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Test/ViewControllers/DetailedPageViewController.swift"
-            timestampString = "572808009.349187"
+            timestampString = "572810101.510893"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "74"
@@ -554,7 +554,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Test/CoreData/CoreDataService.swift"
-            timestampString = "572808009.3492301"
+            timestampString = "572810101.510949"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "71"
@@ -570,7 +570,7 @@
                   moduleName = "Test"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/eleneakhvlediani/Documents/Test/Test/CoreData/CoreDataService.swift"
-                  timestampString = "572808009.524511"
+                  timestampString = "572809676.493553"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "71"
@@ -585,7 +585,7 @@
                   moduleName = "Test"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/eleneakhvlediani/Documents/Test/Test/CoreData/CoreDataService.swift"
-                  timestampString = "572808009.52641"
+                  timestampString = "572809676.495235"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "70"
@@ -602,13 +602,136 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Test/ViewModels/DetailedPageViewModel.swift"
-            timestampString = "572808009.349274"
+            timestampString = "572810101.511003"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "75"
             endingLineNumber = "75"
             landmarkName = "deleteAlbum(completionHandler:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TestTests/AlbumsViewModelTests.swift"
+            timestampString = "572810101.511059"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "AlbumsViewModelTests"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TestTests.AlbumsViewModelTests.__allocating_init(invocation: Swift.Optional&lt;__C.NSInvocation&gt;) -&gt; TestTests.AlbumsViewModelTests"
+                  moduleName = "TestTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eleneakhvlediani/Documents/Test/TestTests/AlbumsViewModelTests.swift"
+                  timestampString = "572809677.3213921"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TestTests.AlbumsViewModelTests.init(invocation: Swift.Optional&lt;__C.NSInvocation&gt;) -&gt; TestTests.AlbumsViewModelTests"
+                  moduleName = "TestTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eleneakhvlediani/Documents/Test/TestTests/AlbumsViewModelTests.swift"
+                  timestampString = "572809677.3232729"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "41">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TestTests.AlbumsViewModelTests.__allocating_init(selector: ObjectiveC.Selector) -&gt; TestTests.AlbumsViewModelTests"
+                  moduleName = "TestTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eleneakhvlediani/Documents/Test/TestTests/AlbumsViewModelTests.swift"
+                  timestampString = "572809677.325321"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TestTests.AlbumsViewModelTests.init(selector: ObjectiveC.Selector) -&gt; TestTests.AlbumsViewModelTests"
+                  moduleName = "TestTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eleneakhvlediani/Documents/Test/TestTests/AlbumsViewModelTests.swift"
+                  timestampString = "572809677.32715"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "41">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TestTests.AlbumsViewModelTests.__allocating_init() -&gt; TestTests.AlbumsViewModelTests"
+                  moduleName = "TestTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eleneakhvlediani/Documents/Test/TestTests/AlbumsViewModelTests.swift"
+                  timestampString = "572809677.328974"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TestTests.AlbumsViewModelTests.init() -&gt; TestTests.AlbumsViewModelTests"
+                  moduleName = "TestTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eleneakhvlediani/Documents/Test/TestTests/AlbumsViewModelTests.swift"
+                  timestampString = "572809677.3308181"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "29">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TestTests.AlbumsViewModelTests.__deallocating_deinit"
+                  moduleName = "TestTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/eleneakhvlediani/Documents/Test/TestTests/AlbumsViewModelTests.swift"
+                  timestampString = "572809677.332707"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

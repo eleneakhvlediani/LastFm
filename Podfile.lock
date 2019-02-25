@@ -1,20 +1,16 @@
 PODS:
   - Alamofire (4.7.3)
-  - Nimble (6.0.1)
 
 DEPENDENCIES:
   - Alamofire
-  - Nimble (~> 6.0.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
-    - Nimble
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
-  Nimble: 1527fd1bd2b4cf0636251a36bc8ab37e81da8347
 
-PODFILE CHECKSUM: 7547416ba90f2dc026d45279215670059ef9b8be
+PODFILE CHECKSUM: 6f7d77cbac1da8502b6c57fe3bcc2bf0f44b5ead
 
 COCOAPODS: 1.5.3

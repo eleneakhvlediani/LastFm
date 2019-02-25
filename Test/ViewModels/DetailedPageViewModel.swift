@@ -44,6 +44,6 @@ class DetailedPageViewModel {
         guard let album = albumInfo else {
             return
         }
-        coreDataService.addAlbum(album: album)
+        coreDataService.deleteAlbum(with: album.name)
     }
 }

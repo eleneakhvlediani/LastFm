@@ -68,18 +68,14 @@ class CoreDataService {
     func deleteAlbum(with albumName: String) {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: Entity.album.rawValue)
         request.returnsObjectsAsFaults = false
+        let predicate = NSPredicate(format: "name = %@", albumName)
+        request.predicate = predicate
         do {
             let result = try context.fetch(request)
             guard let contextArray = (result as? [NSManagedObject]) else {
                 return
             }
-            let savedAlbums = contextArray.filter {  context  in
-                guard let name = (context as? Album)?.name else {
-                        return false
-                }
-                return name == albumName
-            }
-            savedAlbums.forEach { obj in
+            contextArray.forEach { obj in
                  context.delete(obj)
             }
         } catch {

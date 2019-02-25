@@ -16,8 +16,8 @@ struct AlbumInfo: Decodable {
     let artist: String
     let image: [Image]
     let tracks: TrackList
-    var imageUrl: String? {
-        return image.last?.text
+    var imageUrl: String {
+        return image.last?.text ?? ""
     }
 }
 
@@ -27,4 +27,7 @@ struct TrackList: Decodable {
 
 struct Track: Decodable {
     let name: String
+    init(name: String) {
+        self.name = name
+    }
 }

@@ -11,12 +11,7 @@ import UIKit
 class AlbumsViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    var name: String?
-    lazy var albumsViewModel: AlbumsViewModel = {
-        var model = AlbumsViewModel(name: name ?? "")
-        return model
-    }()
-    
+    var albumsViewModel: AlbumsViewModel!
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = albumsViewModel.title

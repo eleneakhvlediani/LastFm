@@ -11,11 +11,15 @@ import Alamofire
 
 class DetailedPageViewModel {
     let apiClient: LastFmApiClient
+    let coreDataService: CoreDataService
     private(set) var tracks: [TrackCellViewModel] = []
     private let albumViewModel: AlbumCellViewModel?
+    private var albumInfo: AlbumInfo?
     init(apiClient: LastFmApiClient = LastFmApiClient(),
+         coreDataService: CoreDataService = .shared,
         albumViewModel: AlbumCellViewModel?) {
         self.apiClient = apiClient
+        self.coreDataService = coreDataService
         self.albumViewModel = albumViewModel
     }
     
@@ -27,11 +31,19 @@ class DetailedPageViewModel {
         apiClient.getAlbumInfo(artistName: artistName, albumName: albumName) { [weak self] result in
             switch result {
             case .success(let albums):
+                self?.albumInfo = albums.album
                 self?.tracks = albums.album.tracks.track.map { TrackCellViewModel(name: $0.name)}
                 completionHandler(albums.album)
             case .failure(let error):
                 print(error)
             }
         }
+    }
+    
+    func saveAlbum() {
+        guard let album = albumInfo else {
+            return
+        }
+        coreDataService.addAlbum(album: album)
     }
 }

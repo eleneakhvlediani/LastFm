@@ -32,7 +32,7 @@ class DetailedPageViewController: UIViewController {
         detailedPageViewModel.getAlbumInfo {  [weak self] albumInfo in
             self?.albumNameLabel.text = albumInfo.name
             self?.artistNameLabel.text = albumInfo.artist
-            self?.albumImageView.lazyLoad(url: albumInfo.imageUrl ?? "") { img in
+            self?.albumImageView.lazyLoad(url: albumInfo.imageUrl) { img in
                 self?.albumImageView.setImageWithFadeAnimation(img)
             }
             self?.tracksTableView.reloadData()
@@ -42,6 +42,7 @@ class DetailedPageViewController: UIViewController {
     }
     
     @IBAction func saveButtonClicked(_ sender: Any) {
+        detailedPageViewModel.saveAlbum()
     }
 }
 

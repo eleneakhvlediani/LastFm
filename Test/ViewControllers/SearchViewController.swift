@@ -50,7 +50,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let albumsViewController: AlbumsViewController = UIStoryboard.main.instantiate()
-        albumsViewController.name =  searchViewModel.items[indexPath.row].name
+        albumsViewController.albumsViewModel = AlbumsViewModel(name: searchViewModel.items[indexPath.row].name)            
         navigationController?.pushViewController(albumsViewController, animated: true)
     }
     

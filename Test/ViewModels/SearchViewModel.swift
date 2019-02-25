@@ -40,7 +40,7 @@ class SearchViewModel: NSObject, UISearchBarDelegate {
                 self?.items = artists.results.artistmatches.artist.map { artist in
                     return ArtistCellViewModel(name: artist.name,
                                                id: artist.mbid,
-                                               imageUrl: artist.imageUrl ?? "",
+                                               imageUrl: artist.imageUrl,
                                                listenersInfo: "Listened by \(artist.listeners)")
                 }
                 self?.tableUpdated?()

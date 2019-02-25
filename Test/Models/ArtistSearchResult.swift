@@ -25,8 +25,8 @@ struct Artist: Decodable {
     let url: String
     let streamable: String
     let image: [Image]
-    var imageUrl: String? {
-        return image.last?.text
+    var imageUrl: String {
+        return image.last?.text ?? ""
     }
 }
 

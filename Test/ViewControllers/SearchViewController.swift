@@ -35,6 +35,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchViewModel.items.count
     }
@@ -50,7 +51,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let albumsViewController: AlbumsViewController = UIStoryboard.main.instantiate()
-        albumsViewController.albumsViewModel = AlbumsViewModel(name: searchViewModel.items[indexPath.row].name)            
+        let name = searchViewModel.items[indexPath.row].name
+        albumsViewController.albumsViewModel = AlbumsViewModel(strategy: DownloadStrategy(name: name))
         navigationController?.pushViewController(albumsViewController, animated: true)
     }
     

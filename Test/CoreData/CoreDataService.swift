@@ -19,6 +19,7 @@ class CoreDataService {
             fatalError("Container must not be nil")
         }
         context = container.viewContext
+        context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
     }
     
     func addAlbum(album: AlbumInfo) {
@@ -84,7 +85,6 @@ class CoreDataService {
         } catch {
             print("Failed")
         }
-        
         save()
     }
 }

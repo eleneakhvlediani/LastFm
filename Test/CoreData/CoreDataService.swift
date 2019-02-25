@@ -13,6 +13,7 @@ import CoreData
 class CoreDataService {
     static let shared = CoreDataService()
     private let context: NSManagedObjectContext
+    private var updateDelegates = [CoreDataServiceDelegate]()
     init(persistentContainer: NSPersistentContainer? =
         (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer) {
         guard let container = persistentContainer else {
@@ -99,5 +100,8 @@ class CoreDataService {
         } catch {
             print("Failed")
         }
+    }
+    func addObserver<T: CoreDataServiceDelegate>(_ observer: T) {
+        updateDelegates.append(WeakRef(value: observer))
     }
 }

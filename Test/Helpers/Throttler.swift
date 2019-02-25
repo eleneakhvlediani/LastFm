@@ -21,7 +21,6 @@ public class Throttler {
         self.maxInterval = seconds
     }
     
-    
     func throttle(block: @escaping () -> ()) {
         job.cancel()
         job = DispatchWorkItem(){ [weak self] in

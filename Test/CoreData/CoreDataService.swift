@@ -9,99 +9,65 @@
 import Foundation
 import UIKit
 import CoreData
+import RealmSwift
 
 class CoreDataService {
     static let shared = CoreDataService()
-    private let context: NSManagedObjectContext
     private var updateDelegates = [CoreDataServiceDelegate]()
-    init(persistentContainer: NSPersistentContainer? =
-        (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer) {
-        guard let container = persistentContainer else {
-            fatalError("Container must not be nil")
+    let realm: Realm
+    init() {
+        do {
+            realm = try Realm()
+        } catch {
+            fatalError()
         }
-        context = container.viewContext
-        context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
     }
     
     func addAlbum(album: AlbumInfo, completionHandler: @escaping ()->Void) {
-        let albumContext = Album(context: context)
+        let albumContext = SavedAlbum()
         albumContext.name = album.name
-        albumContext.artistName = album.artist
+        albumContext.artist = album.artist
         albumContext.imageUrl = album.imageUrl
         album.tracks.track.forEach { track in
-            let savedTrack = SavedTrack(context: context)
+            let savedTrack = TrackRealm()
             savedTrack.name = track.name
-            albumContext.addToTracks(savedTrack)
+            albumContext.tracks.append(savedTrack)
         }
-        save(completionHandler: completionHandler)
+        try? realm.write {
+            realm.add(albumContext)
+            save(completionHandler: completionHandler)
+        }
     }
     
     func getAlbums(completionHandler: @escaping (([SavedAlbum])-> Void)) {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: Entity.album.rawValue)
-        request.returnsObjectsAsFaults = false
-        do {
-            let result = try context.fetch(request)
-            guard let contextArray = (result as? [NSManagedObject]) else {
-                return
-            }
-            let savedAlbums = contextArray
-                .compactMap {
-                    return $0 as? Album
-                }
-                .map { fetched -> SavedAlbum in
-                    let tracks = (fetched.tracks?.allObjects as? [SavedTrack])?.compactMap { Track(name: $0.name ?? "") }
-                    return SavedAlbum(name: fetched.name ?? "", artist: fetched.artistName ?? "", imageUrl: fetched.imageUrl ?? "", tracks: tracks)
-                }
-            completionHandler(savedAlbums)
-        } catch {
-            print("Failed")
+        let albums = realm.objects(SavedAlbum.self)
+        var savedAlbum = [SavedAlbum]()
+        albums.forEach { saved in
+            savedAlbum.append(saved)
         }
+        completionHandler(savedAlbum)
     }
     
     private func save(completionHandler: @escaping ()->Void) {
-        do {
-            try context.save()
-            completionHandler()
-            updateDelegates.forEach { $0.didUpdate() }
-        } catch {
-            print("Failed saving")
-        }
+        completionHandler()
+        updateDelegates.forEach { $0.didUpdate() }
     }
     
     func deleteAlbum(with albumName: String, completionHandler: @escaping ()->Void) {
-        getSavedAlbums(with: albumName) { [weak self] contextArray in
-            contextArray.forEach { obj in
-                self?.context.delete(obj)
-            }
-            self?.save(completionHandler: completionHandler)
+        let found = realm.objects(SavedAlbum.self).filter { $0.name == albumName }
+        try? realm.write {
+            realm.delete(found)
+            save(completionHandler: completionHandler)
         }
     }
     
     func getAlbum(with albumName: String, completionHandler: @escaping (SavedAlbum)->Void) {
-        getSavedAlbums(with: albumName) { contextArray in
-            if let album = contextArray.first as? Album {
-                let tracks = (album.tracks?.allObjects as? [SavedTrack])?.compactMap { Track(name: $0.name ?? "") }
-                let saved = SavedAlbum(name: album.name ?? "", artist: album.artistName ?? "", imageUrl: album.imageUrl ?? "", tracks: tracks)
-                completionHandler(saved)
-            }
+        let found = realm.objects(SavedAlbum.self).filter { $0.name == albumName }
+        if let firstFoundAlbum = found.first {
+            completionHandler(firstFoundAlbum)
         }
     }
 
-    private func getSavedAlbums(with albumName: String, completionHandler: @escaping ([NSManagedObject])->Void) {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: Entity.album.rawValue)
-        request.returnsObjectsAsFaults = false
-        let predicate = NSPredicate(format: "name = %@", albumName)
-        request.predicate = predicate
-        do {
-            let result = try context.fetch(request)
-            guard let contextArray = (result as? [NSManagedObject]) else {
-                return
-            }
-            completionHandler(contextArray)
-        } catch {
-            print("Failed")
-        }
-    }
     func addObserver<T: CoreDataServiceDelegate>(_ observer: T) {
         updateDelegates.append(WeakRef(value: observer))
     }

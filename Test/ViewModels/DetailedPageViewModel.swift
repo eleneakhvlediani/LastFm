@@ -54,8 +54,8 @@ class DetailedPageViewModel {
     
     private func getFromDataBase(albumName: String, completionHandler: @escaping (AlbumInfo)-> Void) {
         coreDataService.getAlbum(with: albumName) { [weak self] savedAlbum in
-            self?.tracks = savedAlbum.tracks?.map { TrackCellViewModel(name: $0.name)} ?? []
-            let album = AlbumInfo(name: savedAlbum.name, artist: savedAlbum.artist, imageUrl: savedAlbum.imageUrl, tracks: savedAlbum.tracks ?? [])
+            self?.tracks = savedAlbum.tracks.map { TrackCellViewModel(name: $0.name)}
+            let album = AlbumInfo(name: savedAlbum.name, artist: savedAlbum.artist, imageUrl: savedAlbum.imageUrl, tracks: savedAlbum.tracks.map { Track(name: $0.name)})
             self?.albumInfo = album
             completionHandler(album)
         }

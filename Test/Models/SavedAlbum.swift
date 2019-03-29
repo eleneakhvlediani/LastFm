@@ -7,10 +7,15 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct SavedAlbum {
-    let name: String
-    let artist: String
-    let imageUrl: String
-    var tracks: [Track]? = nil
+class SavedAlbum: Object {
+    @objc dynamic var name = ""
+    @objc dynamic var artist = ""
+    @objc dynamic var imageUrl = ""
+    var tracks = RealmSwift.List<TrackRealm>()
+}
+
+class TrackRealm: Object {
+    @objc dynamic var name = ""
 }

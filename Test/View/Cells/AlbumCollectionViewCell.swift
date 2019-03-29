@@ -16,9 +16,11 @@ class AlbumCollectionViewCell: BaseCollectionViewCell {
     @IBOutlet weak var artistNameLabel: UILabel!
     private var imageUrl: String?
     
+    @IBOutlet weak var topShadow: ShadowView!
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
-        isSavedImageView.image = #imageLiteral(resourceName: "icons8-heart-filled-20").withRenderingMode(.alwaysTemplate)        
+        isSavedImageView.image = #imageLiteral(resourceName: "icons8-heart-filled-20").withRenderingMode(.alwaysTemplate)
+        topShadow.colors = topShadow.colors.reversed()
     }
     
     override func set(viewData: BaseCellViewModel) {
@@ -35,5 +37,6 @@ class AlbumCollectionViewCell: BaseCollectionViewCell {
             }
         }
         isSavedImageView.isHidden = !info.isSaved
+        topShadow.isHidden = isSavedImageView.isHidden
     }
 }

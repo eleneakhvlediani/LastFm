@@ -159,6 +159,10 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mu2-kC-jPH">
                                                     <rect key="frame" x="0.0" y="0.0" width="190" height="194"/>
                                                 </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jZo-Sw-BOV" customClass="ShadowView" customModule="Test" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="190" height="45"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T6O-hM-G2B" customClass="ShadowView" customModule="Test" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="97" width="190" height="97"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -188,6 +192,7 @@
                                         <constraints>
                                             <constraint firstItem="T6O-hM-G2B" firstAttribute="height" secondItem="mu2-kC-jPH" secondAttribute="height" multiplier="0.5" id="2h8-6Y-nbJ"/>
                                             <constraint firstItem="mu2-kC-jPH" firstAttribute="leading" secondItem="pb6-Pp-N5Y" secondAttribute="leading" id="4Rk-ms-krA"/>
+                                            <constraint firstAttribute="trailing" secondItem="jZo-Sw-BOV" secondAttribute="trailing" id="7Vs-le-8SP"/>
                                             <constraint firstItem="6be-uX-USh" firstAttribute="top" secondItem="rbE-1j-o7H" secondAttribute="bottom" constant="5" id="8Hb-HD-xnW"/>
                                             <constraint firstItem="6be-uX-USh" firstAttribute="bottom" secondItem="T6O-hM-G2B" secondAttribute="bottom" constant="-5" id="Alw-XH-by9"/>
                                             <constraint firstItem="mu2-kC-jPH" firstAttribute="top" secondItem="pb6-Pp-N5Y" secondAttribute="top" id="Dug-en-FcF"/>
@@ -196,10 +201,13 @@
                                             <constraint firstItem="T6O-hM-G2B" firstAttribute="centerX" secondItem="mu2-kC-jPH" secondAttribute="centerX" id="NuS-jJ-5Nf"/>
                                             <constraint firstAttribute="bottom" secondItem="mu2-kC-jPH" secondAttribute="bottom" id="TMr-sl-W4C"/>
                                             <constraint firstAttribute="trailing" secondItem="osd-nC-oP2" secondAttribute="trailing" constant="10" id="TTG-eN-V6r"/>
+                                            <constraint firstItem="jZo-Sw-BOV" firstAttribute="leading" secondItem="pb6-Pp-N5Y" secondAttribute="leading" id="WSV-vD-1Qm"/>
                                             <constraint firstItem="T6O-hM-G2B" firstAttribute="width" secondItem="mu2-kC-jPH" secondAttribute="width" id="ad2-zL-9IM"/>
+                                            <constraint firstItem="jZo-Sw-BOV" firstAttribute="top" secondItem="pb6-Pp-N5Y" secondAttribute="top" id="cBJ-G6-J25"/>
                                             <constraint firstItem="osd-nC-oP2" firstAttribute="top" secondItem="pb6-Pp-N5Y" secondAttribute="top" constant="10" id="dCf-nl-h4v"/>
                                             <constraint firstAttribute="trailing" secondItem="mu2-kC-jPH" secondAttribute="trailing" id="fZA-hQ-aaA"/>
                                             <constraint firstItem="rbE-1j-o7H" firstAttribute="leading" secondItem="6be-uX-USh" secondAttribute="leading" id="i2k-gI-72y"/>
+                                            <constraint firstItem="jZo-Sw-BOV" firstAttribute="bottom" secondItem="osd-nC-oP2" secondAttribute="bottom" constant="10" id="mUz-WM-P1j"/>
                                             <constraint firstAttribute="bottom" secondItem="T6O-hM-G2B" secondAttribute="bottom" id="oBH-bM-Zja"/>
                                             <constraint firstItem="rbE-1j-o7H" firstAttribute="trailing" secondItem="6be-uX-USh" secondAttribute="trailing" id="vOc-NJ-pVD"/>
                                         </constraints>
@@ -208,6 +216,7 @@
                                             <outlet property="albumNameLabel" destination="rbE-1j-o7H" id="5l0-P7-r7Z"/>
                                             <outlet property="artistNameLabel" destination="6be-uX-USh" id="yap-9P-QVz"/>
                                             <outlet property="isSavedImageView" destination="osd-nC-oP2" id="1Rz-Qu-fvt"/>
+                                            <outlet property="topShadow" destination="jZo-Sw-BOV" id="uym-LT-wOr"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

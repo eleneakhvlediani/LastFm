@@ -62,6 +62,7 @@ class CoreDataService {
         do {
             try context.save()
             completionHandler()
+            updateDelegates.forEach { $0.didUpdate() }
         } catch {
             print("Failed saving")
         }

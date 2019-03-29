@@ -18,7 +18,7 @@ class AlbumCollectionViewCell: BaseCollectionViewCell {
     
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
-        isSavedImageView.image = #imageLiteral(resourceName: "icons8-heart-filled-20").tint(with: .white)
+        isSavedImageView.image = #imageLiteral(resourceName: "icons8-heart-filled-20").withRenderingMode(.alwaysTemplate)        
     }
     
     override func set(viewData: BaseCellViewModel) {

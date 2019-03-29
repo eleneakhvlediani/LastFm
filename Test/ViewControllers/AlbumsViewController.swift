@@ -17,11 +17,12 @@ class AlbumsViewController: UIViewController {
         navigationItem.title = albumsViewModel.title
         activityIndicator.startAnimating()
         collectionView.isHidden = true
-        albumsViewModel.getAlbums { [weak self] in
+        albumsViewModel.didUpdateAlbums = { [weak self] in
             self?.collectionView.reloadData()
             self?.activityIndicator.stopAnimating()
             self?.collectionView.isHidden = false
         }
+        albumsViewModel.getAlbums()
         if albumsViewModel.shouldHaveSearch {
             navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icons8-search-50"), style: UIBarButtonItem.Style.plain, target: self, action:  #selector(searchClicked))
         }

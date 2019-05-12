@@ -16,6 +16,10 @@ extension UITableView {
         }
         return cell
     }
+    
+    func registerNib<T: UITableViewCell>(for cellType: T.Type) {
+        self.register(UINib(nibName:  T.className, bundle: nil), forCellReuseIdentifier: T.className)
+    }
 }
 
 extension UICollectionView {

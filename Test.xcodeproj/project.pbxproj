@@ -11,7 +11,6 @@
 		4CBDE7F93FA71BF2929D39F1 /* Pods_TestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A014102159EE1DCE9C58FF2B /* Pods_TestTests.framework */; };
 		6F05E5F12222FED6004F957A /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F05E5F02222FED6004F957A /* BaseTableViewCell.swift */; };
 		6F05E5F32222FF51004F957A /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F05E5F22222FF51004F957A /* UITableView+Extension.swift */; };
-		6F05E5F62222FFD0004F957A /* ArtistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F05E5F52222FFD0004F957A /* ArtistTableViewCell.swift */; };
 		6F05E5F9222301EA004F957A /* ArtistCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F05E5F8222301EA004F957A /* ArtistCellViewModel.swift */; };
 		6F05E5FB2223053F004F957A /* ImageProviderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F05E5FA2223053F004F957A /* ImageProviderService.swift */; };
 		6F05E5FD22230650004F957A /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F05E5FC22230650004F957A /* UIImageView+Extension.swift */; };
@@ -51,6 +50,8 @@
 		6FEABC272224622D0088288B /* GetFromDataBaseStartegyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FEABC262224622D0088288B /* GetFromDataBaseStartegyTests.swift */; };
 		6FEABC292224631E0088288B /* NSObject_ExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FEABC282224631E0088288B /* NSObject_ExtensionTests.swift */; };
 		6FEABC2B222466430088288B /* CoreDataServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FEABC2A222466430088288B /* CoreDataServiceDelegate.swift */; };
+		B3B23172224E5C2B00A9E6D1 /* ArtistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B23170224E5C2B00A9E6D1 /* ArtistTableViewCell.swift */; };
+		B3B23173224E5C2B00A9E6D1 /* ArtistTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3B23171224E5C2B00A9E6D1 /* ArtistTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,7 +68,6 @@
 		568665DE5A72F56AF270A993 /* Pods-Test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Test/Pods-Test.debug.xcconfig"; sourceTree = "<group>"; };
 		6F05E5F02222FED6004F957A /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		6F05E5F22222FF51004F957A /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
-		6F05E5F52222FFD0004F957A /* ArtistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistTableViewCell.swift; sourceTree = "<group>"; };
 		6F05E5F8222301EA004F957A /* ArtistCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistCellViewModel.swift; sourceTree = "<group>"; };
 		6F05E5FA2223053F004F957A /* ImageProviderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProviderService.swift; sourceTree = "<group>"; };
 		6F05E5FC22230650004F957A /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
@@ -113,6 +113,8 @@
 		6FEABC2A222466430088288B /* CoreDataServiceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataServiceDelegate.swift; sourceTree = "<group>"; };
 		999171C98514F1BFBF5F4D0E /* Pods_Test.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Test.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A014102159EE1DCE9C58FF2B /* Pods_TestTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3B23170224E5C2B00A9E6D1 /* ArtistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistTableViewCell.swift; sourceTree = "<group>"; };
+		B3B23171224E5C2B00A9E6D1 /* ArtistTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArtistTableViewCell.xib; sourceTree = "<group>"; };
 		C6A9A909C84EF6D053BEDFD6 /* Pods-TestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestTests/Pods-TestTests.release.xcconfig"; sourceTree = "<group>"; };
 		E2B8C44DFA89B5AF5BD4378C /* Pods-TestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestTests/Pods-TestTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EA01617103DDF53CEA5F4105 /* Pods-Test.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test.release.xcconfig"; path = "Pods/Target Support Files/Pods-Test/Pods-Test.release.xcconfig"; sourceTree = "<group>"; };
@@ -159,9 +161,10 @@
 		6F05E5F42222FF94004F957A /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				6F05E5F52222FFD0004F957A /* ArtistTableViewCell.swift */,
 				6F05E60B22233A32004F957A /* AlbumCollectionViewCell.swift */,
 				6F05E615222353DB004F957A /* TrackTableViewCell.swift */,
+				B3B23170224E5C2B00A9E6D1 /* ArtistTableViewCell.swift */,
+				B3B23171224E5C2B00A9E6D1 /* ArtistTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -410,6 +413,7 @@
 			files = (
 				6FDA5564221202450061D0D7 /* LaunchScreen.storyboard in Resources */,
 				6FDA5561221202450061D0D7 /* Assets.xcassets in Resources */,
+				B3B23173224E5C2B00A9E6D1 /* ArtistTableViewCell.xib in Resources */,
 				6FDA555F221202430061D0D7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -528,13 +532,13 @@
 				6F05E6082223135F004F957A /* AlbumsResult.swift in Sources */,
 				6F05E60322230EBC004F957A /* LastFMRequest.swift in Sources */,
 				6F05E62222235DDF004F957A /* SavedAlbum.swift in Sources */,
+				B3B23172224E5C2B00A9E6D1 /* ArtistTableViewCell.swift in Sources */,
 				6F05E60E22233A63004F957A /* AlbumCellViewModel.swift in Sources */,
 				6F05E5FB2223053F004F957A /* ImageProviderService.swift in Sources */,
 				6FDA558E22120C070061D0D7 /* LastFmApiClient.swift in Sources */,
 				6F05E60522230FF1004F957A /* AlbumsViewModel.swift in Sources */,
 				6F05E5FD22230650004F957A /* UIImageView+Extension.swift in Sources */,
 				6F05E61222234871004F957A /* DetailedPageViewModel.swift in Sources */,
-				6F05E5F62222FFD0004F957A /* ArtistTableViewCell.swift in Sources */,
 				6FDA558F22120C070061D0D7 /* APIEndPoint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

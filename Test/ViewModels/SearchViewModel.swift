@@ -9,44 +9,44 @@
 import Foundation
 import UIKit
 
-class SearchViewModel: NSObject, UISearchBarDelegate {
-    let apiClient: LastFmApiClient
+class SearchViewModel: NSObject, UITableViewDelegate, UITableViewDataSource {
     let title = "Search"
-    private(set) var items = [ArtistCellViewModel]()
-    private var throttler = Throttler(seconds: 0.5)
-    private var searchText: String = ""
-    var tableUpdated: (()->Void)?
-    init(apiClient: LastFmApiClient = LastFmApiClient()) {
-        self.apiClient = apiClient
+    var items = [ArtistCellViewModel]()
+    var searchedText: String = ""
+    var openDetailedPage: ((String)->Void)?
+    
+    override init() {
+        super.init()
     }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        self.searchText = searchText
-        throttler.throttle {
-            DispatchQueue.main.async { [weak self] in
-                self?.search(text: searchText)
-            }
-        }
+    func configureTableView(tableView: UITableView) {
+        tableView.dataSource = searchDataSource
+        tableView.delegate = searchDataSource
+        tableView.registerNib(for: ArtistTableViewCell.self)
     }
     
-    private func search(text: String) {
-        guard !text.isEmpty else {
-            return
-        }
-        apiClient.search(for: text) { [weak self] result in
-            guard self?.searchText == text else { return }
-            switch result {
-            case .success(let artists):
-                self?.items = artists.results.artistmatches.artist.map { artist in
-                    return ArtistCellViewModel(name: artist.name,
-                                               id: artist.mbid,
-                                               imageUrl: artist.imageUrl,
-                                               listenersInfo: "Listened by \(artist.listeners)")
-                }
-                self?.tableUpdated?()
-            case .failure(let error):
-                print(error)
-            }
-        }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return items.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let item = items[indexPath.row]
+        let cell: BaseTableViewCell = tableView.dequeueReusableCell(for: BaseTableViewCell.self, reusableIdentifier: item.identifier,
+                                                                    for: indexPath)
+        cell.set(viewData: item)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let name = items[indexPath.row].name
+        openDetailedPage?(name)
     }
 }

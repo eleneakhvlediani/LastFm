@@ -9,51 +9,54 @@
 import Foundation
 import UIKit
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
-    let searchViewModel = SearchViewModel()
+    private let searchDataSource = SearchViewModel()
+    private var throttler = Throttler(seconds: 0.5)
+    private var apiClient = LastFmApiClient()
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = searchViewModel.title
-        searchBar.delegate = searchViewModel
-        tableView.isHidden = true
-        searchViewModel.tableUpdated = { [weak self] in
-            self?.tableView.reloadData()
-            self?.tableView.isHidden = false
+        navigationItem.title = searchDataSource.title
+        searchDataSource.openDetailedPage = { [weak self] name in
+            let albumsViewController: AlbumsViewController = UIStoryboard.main.instantiate()
+            albumsViewController.albumsViewModel = AlbumsViewModel(strategy: DownloadStrategy(name: name))
+            self?.navigationController?.pushViewController(albumsViewController, animated: true)
         }
+        searchDataSource.configureTableView(tableView: tableView)
+        searchBar.delegate = self
+        tableView.isHidden = true
         searchBar.becomeFirstResponder()
     }
-}
-
-extension SearchViewController: UITableViewDelegate, UITableViewDataSource{
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchDataSource.searchedText = searchText
+        throttler.throttle {
+            DispatchQueue.main.async { [weak self] in
+                self?.search(text: searchText)
+            }
+        }
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+    private func search(text: String) {
+        guard !text.isEmpty else {
+            return
+        }
+        apiClient.search(for: text) { [weak self] result in
+            guard self?.searchDataSource.searchedText == text else { return }
+            switch result {
+            case .success(let artists):
+                self?.searchDataSource.items = artists.results.artistmatches.artist.map { artist in
+                    return ArtistCellViewModel(name: artist.name,
+                                               id: artist.mbid,
+                                               imageUrl: artist.imageUrl,
+                                               listenersInfo: "Listened by \(artist.listeners)")
+                }
+                self?.tableView.reloadData()
+                self?.tableView.isHidden = false
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchViewModel.items.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item = searchViewModel.items[indexPath.row]
-        let cell: BaseTableViewCell = tableView.dequeueReusableCell(for: BaseTableViewCell.self,
-                                                                    reusableIdentifier: item.identifier,
-                                                                    for: indexPath)
-        cell.set(viewData: item)
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let albumsViewController: AlbumsViewController = UIStoryboard.main.instantiate()
-        let name = searchViewModel.items[indexPath.row].name
-        albumsViewController.albumsViewModel = AlbumsViewModel(strategy: DownloadStrategy(name: name))
-        navigationController?.pushViewController(albumsViewController, animated: true)
-    }
-    
 }
